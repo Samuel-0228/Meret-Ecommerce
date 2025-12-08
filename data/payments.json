@@ -1,0 +1,11 @@
+[
+    {
+        "id": 1,
+        "order_id": 1,
+        "buyer_id": 2,
+        "qty_delivered": 5.00,
+        "expected_amount": 125.00,
+        "status": "pending",
+        "paid_at": null
+    }
+]

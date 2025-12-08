@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "crop": "Tomato",
+        "qty": 5,
+        "lot": "LOT123",
+        "village": "Village A",
+        "harvest_date": "2025-11-28",
+        "photo_url": "",
+        "farmer_id": 1,
+        "approved": true,
+        "created_at": "2025-11-28T09:00:00Z",
+        "quantity": 0
+    },
+    {
+        "id": "692a0de02664d",
+        "crop": "teff",
+        "qty": 94,
+        "lot": "1234",
+        "village": "adama",
+        "harvest_date": "2025-11-28",
+        "photo_url": "",
+        "farmer_id": 1,
+        "approved": true,
+        "created_at": "2025-11-28T22:02:24+01:00"
+    },
+    {
+        "id": "69347202ca06c",
+        "crop": "bean",
+        "qty": 50,
+        "lot": "1235",
+        "village": "bahir dar",
+        "harvest_date": "2025-12-06",
+        "photo_url": "",
+        "farmer_id": 1,
+        "approved": true,
+        "created_at": "2025-12-06T19:12:18+01:00"
+    },
+    {
+        "id": "69348acf4f3b7",
+        "crop": "Onion",
+        "qty": 100,
+        "lot": "1221",
+        "village": "harer",
+        "harvest_date": "2025-12-06",
+        "photo_url": "",
+        "farmer_id": 1,
+        "approved": true,
+        "created_at": "2025-12-06T20:58:07+01:00"
+    }
+]

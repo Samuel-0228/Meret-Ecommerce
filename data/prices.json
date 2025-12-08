@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "city": "Addis Ababa",
+        "crop": "Tomatoes",
+        "value": 25,
+        "consumer_id": 2,
+        "submitted_at": "2025-11-28T10:00:00Z"
+    },
+    {
+        "id": 2,
+        "city": "Bahir Dar",
+        "crop": "Tomatoes",
+        "value": 28,
+        "consumer_id": 2,
+        "submitted_at": "2025-11-28T11:00:00Z"
+    },
+    {
+        "city": "Addis Ababa",
+        "crop": "teff",
+        "value": 1000,
+        "user_id": 1,
+        "time": "2025-11-28 21:42:14"
+    },
+    {
+        "city": "Addis Ababa",
+        "crop": "teff",
+        "value": 99,
+        "user_id": 1,
+        "time": "2025-12-06 21:58:11"
+    }
+]

@@ -1,0 +1,28 @@
+[
+    {
+        "id": 3,
+        "name": "Agent User",
+        "email": "agent@example.com",
+        "national_id": "AG123",
+        "approved": true,
+        "created_at": "2025-11-28T08:00:00Z"
+    },
+    {
+        "id": 1765058338,
+        "name": "kebede",
+        "email": "kebede@example.com",
+        "password": "$2y$10$RTC8dnpR17him1rXHeE8Ve07pC3UbyccF4TYWOvm5N8s5Bk5MomKi",
+        "national_id": "122422",
+        "approved": false,
+        "created_at": "2025-12-06T22:58:58+01:00"
+    },
+    {
+        "id": 1765058400,
+        "name": "dagne",
+        "email": "dagne@example.com",
+        "password": "$2y$10$mW.w7.ULTciD5qff8c1PPOxOllgBDa\/lu8Aegl8HHwI551xaEMmoC",
+        "national_id": "54545",
+        "approved": false,
+        "created_at": "2025-12-06T23:00:01+01:00"
+    }
+]

@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1764537439,
+        "farmer_id": 1,
+        "produce_lot": "1234",
+        "status": "pending",
+        "created_at": "2025-11-30T22:17:19+01:00"
+    }
+]

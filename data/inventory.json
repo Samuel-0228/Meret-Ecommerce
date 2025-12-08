@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "crop": "Tomatoes",
+        "qty": 50,
+        "fridge_usage": 70,
+        "low_stock_alert": false,
+        "agent_id": 3,
+        "updated_at": "2025-11-28T09:00:00Z"
+    },
+    {
+        "id": 2,
+        "crop": "Onions",
+        "qty": 30,
+        "fridge_usage": 50,
+        "low_stock_alert": false,
+        "agent_id": 3,
+        "updated_at": "2025-11-28T09:00:00Z"
+    },
+    {
+        "id": 1765044847,
+        "crop": "been",
+        "qty": 10,
+        "fridge_usage": 32,
+        "low_stock_alert": false,
+        "agent_id": 3,
+        "updated_at": "2025-12-06T19:14:07+01:00"
+    }
+]
