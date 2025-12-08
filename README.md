@@ -47,7 +47,7 @@ Agents and administrators can **track produce flow and market trends** to optimi
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/your-username/meret-ecommerce.git
+git clone https://github.com/Samuel-0228/Meret-Ecommerce.git
 ```
 
 2. **Set up the server**
