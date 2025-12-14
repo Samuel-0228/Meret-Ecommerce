@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'id' => uniqid(),
         'crop' => $_POST['crop'] ?? '',
         'qty' => floatval($_POST['qty'] ?? 0),
+        'price' => floatval($_POST['price'] ?? 0),
         'lot' => $_POST['lot'] ?? 'LOT'.time(),
         'village' => $_POST['village'] ?? '',
         'harvest_date' => $_POST['harvest_date'] ?? date('Y-m-d'),
@@ -90,6 +91,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <div class="form-group">
             <label for="qty">Quantity (kg)</label>
             <input type="number" id="qty" name="qty" step="0.01" min="0.01" placeholder="e.g., 50" required>
+          </div>
+          <div class="form-group">
+            <label for="price">Price (Birr)</label>
+            <input type="number" id="price" name="price" step="0.01" min="0.01" placeholder="e.g., 10" required>
           </div>
           <div class="form-group">
             <label for="lot">Lot Number</label>

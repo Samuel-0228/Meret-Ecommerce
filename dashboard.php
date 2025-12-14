@@ -4,12 +4,14 @@ require_once __DIR__.'/includes/auth.php';
 checkLogin();
 $role = getUserRole();
 $name = $_SESSION['user_name'] ?? 'User';
+// Load translations (assume translations.php is required in config.php)
+$currentLang = $_SESSION['lang'] ?? 'en';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= $currentLang ?>">
 <head>
   <meta charset="utf-8">
-  <title>Meret — Fresh Marketplace Dashboard</title>
+  <title><?= t('dashboard_title', $currentLang) ?> — Meret</title>
   <link rel="stylesheet" href="assets/css/dashboard.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -19,54 +21,69 @@ $name = $_SESSION['user_name'] ?? 'User';
     <a href="dashboard.php"><i class="fas fa-leaf"></i> Meret</a>
   </div>
   <div class="search-container">
-    <input type="text" class="search-input" placeholder="Search for fresh produce, farmers, or prices...">
+    <input type="text" class="search-input" placeholder="<?= t('search_placeholder', $currentLang) ?>">
     <button class="search-btn"><i class="fas fa-search"></i></button>
   </div>
   <div class="header-actions">
-    <a href="pages/consumer/cart.php" class="cart-icon" title="Shopping Cart">
+    <a href="pages/consumer/cart.php" class="cart-icon" title="<?= t('cart', $currentLang) ?>">
       <i class="fas fa-shopping-cart"></i>
       <span class="cart-count">0</span>
     </a>
     <div class="user-profile">
       <span class="user-name"><?= htmlspecialchars($name) ?> (<?= htmlspecialchars($role) ?>)</span>
-      <a href="logout.php" class="logout-btn">Logout</a>
+      <a href="logout.php" class="logout-btn"><?= t('logout', $currentLang) ?></a>
+      <!-- Language Selector -->
+      <div class="lang-selector">
+        <select onchange="changeLang(this.value)">
+          <option value="en" <?= $currentLang === 'en' ? 'selected' : '' ?>>EN</option>
+          <option value="am" <?= $currentLang === 'am' ? 'selected' : '' ?>>አማ</option>
+          <option value="om" <?= $currentLang === 'om' ? 'selected' : '' ?>>OM</option>
+        </select>
+      </div>
     </div>
   </div>
 </header>
 
 <nav class="navbar">
   <ul class="nav-list">
-    <li><a href="dashboard.php" class="nav-link active">Home</a></li>
+    <li><a href="dashboard.php" class="nav-link active"><?= t('dashboard') ?></a></li>
+
     <?php if ($role === 'consumer'): ?>
-      <li><a href="pages/consumer/browse.php" class="nav-link">Browse Produce</a></li>
-      <li><a href="pages/common/price_chart.php" class="nav-link">Market Prices</a></li>
-      <li><a href="pages/consumer/reviews.php" class="nav-link">Reviews</a></li>
-      <li><a href="pages/consumer/my_orders.php" class="nav-link">My Orders</a></li>
+      <li><a href="pages/consumer/browse.php" class="nav-link"><?= t('browse_produces') ?></a></li>
+      <li><a href="pages/common/price_chart.php" class="nav-link"><?= t('market_prices') ?></a></li>
+      <li><a href="pages/consumer/reviews.php" class="nav-link"><?= t('reviews') ?></a></li>
+      <li><a href="pages/consumer/my_orders.php" class="nav-link"><?= t('my_orders') ?></a></li>
+
     <?php elseif ($role === 'farmer'): ?>
-      <li><a href="pages/farmer/post_produce.php" class="nav-link">Post Produce</a></li>
-      <li><a href="pages/farmer/order_track.php" class="nav-link">Orders</a></li>
-      <li><a href="pages/common/submit_price.php" class="nav-link">Prices</a></li>
+      <li><a href="pages/farmer/post_produce.php" class="nav-link"><?= t('post_produce') ?></a></li>
+      <li><a href="pages/farmer/order_track.php" class="nav-link"><?= t('orders') ?></a></li>
+      <li><a href="pages/common/submit_price.php" class="nav-link"><?= t('prices') ?></a></li>
+
     <?php elseif ($role === 'agent'): ?>
-      <li><a href="pages/agent/approve_listings.php" class="nav-link">Approvals</a></li>
-      <li><a href="pages/agent/manage_center.php" class="nav-link">Inventory</a></li>
+      <li><a href="pages/agent/approve_listings.php" class="nav-link"><?= t('approvals') ?></a></li>
+      <li><a href="pages/agent/manage_center.php" class="nav-link"><?= t('inventory') ?></a></li>
+
     <?php elseif ($role === 'admin'): ?>
-      <li><a href="pages/admin/approve_agents.php" class="nav-link">Agents</a></li>
-      <li><a href="pages/admin/analytics.php" class="nav-link">Analytics</a></li>
-      <li><a href="pages/admin/requests.php" class="nav-link">Support</a></li>
+      <li><a href="pages/admin/approve_agents.php" class="nav-link"><?= t('agents') ?></a></li>
+      <li><a href="pages/admin/analytics.php" class="nav-link"><?= t('analytics') ?></a></li>
+      <li><a href="pages/admin/requests.php" class="nav-link"><?= t('support') ?></a></li>
+      <li><a href="pages/admin/broadcast_prices.php" class="nav-link"><?= t('sms') ?></a></li>
+
     <?php endif; ?>
   </ul>
 </nav>
+
 
 <main class="main-content">
   <section class="hero-banner">
     <div class="banner-overlay">
       <div class="banner-content">
-        <h1>Welcome back, <?= htmlspecialchars($name) ?>!</h1>
-        <p>Discover fresh, local produce and connect with farmers in your area. Shop smarter, support sustainably.</p>
+        <h1><?= t('welcome_back', $currentLang) ?>, <?= htmlspecialchars($name) ?>!</h1>
+        <p><?= t('discover_fresh_produce', $currentLang) ?></p>
         <?php if ($role === 'consumer'): ?>
-          <a href="pages/consumer/browse.php" class="btn btn-primary btn-large">Start Shopping</a>
+          <a href="pages/consumer/browse.php" class="btn btn-primary btn-large"><?= t('start_shopping', $currentLang) ?></a>
         <?php elseif ($role === 'farmer'): ?>
-          <a href="pages/farmer/post_produce.php" class="btn btn-primary btn-large">List Your Produce</a>
+          <a href="pages/farmer/post_produce.php" class="btn btn-primary btn-large"><?= t('list_produce', $currentLang) ?></a>
         <?php endif; ?>
       </div>
     </div>
@@ -76,8 +93,8 @@ $name = $_SESSION['user_name'] ?? 'User';
 
   <section class="categories-section">
     <div class="container">
-      <h2 class="section-title">Quick Actions</h2>
-      <p class="section-subtitle">Explore essential features tailored to your role. Dive in and get started.</p>
+      <h2 class="section-title"><?= t('quick_actions', $currentLang) ?></h2>
+      <p class="section-subtitle"><?= t('explore_features', $currentLang) ?></p>
       <div class="grid cards-grid">
         <?php if ($role === 'farmer'): ?>
           <div class="card product-card">
@@ -86,12 +103,12 @@ $name = $_SESSION['user_name'] ?? 'User';
             </div>
             <div class="card-content">
               <h3 class="card-title">
-                <a href="pages/farmer/post_produce.php" class="card-link">Post Produce</a>
+                <a href="pages/farmer/post_produce.php" class="card-link"><?= t('post_produce', $currentLang) ?></a>
               </h3>
-              <p class="card-description">Add your harvested produce for sale in the marketplace for buyers to see. Reach more customers effortlessly.</p>
+              <p class="card-description"><?= t('add_harvest_produce', $currentLang) ?></p>
               <div class="card-footer">
-                <span class="card-badge">New Listing</span>
-                <a href="pages/farmer/post_produce.php" class="btn btn-secondary btn-small">Post Now</a>
+                <span class="card-badge"><?= t('new_listing', $currentLang) ?></span>
+                <a href="pages/farmer/post_produce.php" class="btn btn-secondary btn-small"><?= t('post_now', $currentLang) ?></a>
               </div>
             </div>
           </div>
@@ -101,11 +118,11 @@ $name = $_SESSION['user_name'] ?? 'User';
             </div>
             <div class="card-content">
               <h3 class="card-title">
-                <a href="pages/farmer/transport_request.php" class="card-link">Request Transport</a>
+                <a href="pages/farmer/transport_request.php" class="card-link"><?= t('request_transport', $currentLang) ?></a>
               </h3>
-              <p class="card-description">Arrange pickup of your produce to collection centers or buyers quickly. Streamline your logistics.</p>
+              <p class="card-description"><?= t('arrange_pickup', $currentLang) ?></p>
               <div class="card-footer">
-                <button class="btn btn-secondary btn-small" onclick="simulateQuickRequest()">Quick Request</button>
+                <button class="btn btn-secondary btn-small" onclick="simulateQuickRequest()"><?= t('quick_request', $currentLang) ?></button>
               </div>
             </div>
           </div>
@@ -115,11 +132,11 @@ $name = $_SESSION['user_name'] ?? 'User';
             </div>
             <div class="card-content">
               <h3 class="card-title">
-                <a href="pages/farmer/order_track.php" class="card-link">Order Tracking</a>
+                <a href="pages/farmer/order_track.php" class="card-link"><?= t('order_tracking', $currentLang) ?></a>
               </h3>
-              <p class="card-description">Monitor the progress of your orders from placement to delivery. Stay updated in real-time.</p>
+              <p class="card-description"><?= t('monitor_orders', $currentLang) ?></p>
               <div class="card-footer">
-                <span class="status-indicator active">Live Tracking</span>
+                <span class="status-indicator active"><?= t('live_tracking', $currentLang) ?></span>
               </div>
             </div>
           </div>
@@ -129,11 +146,11 @@ $name = $_SESSION['user_name'] ?? 'User';
             </div>
             <div class="card-content">
               <h3 class="card-title">
-                <a href="pages/farmer/payment_track.php" class="card-link">Payment Tracking</a>
+                <a href="pages/farmer/payment_track.php" class="card-link"><?= t('payment_tracking', $currentLang) ?></a>
               </h3>
-              <p class="card-description">Check the status of payments for delivered produce. Ensure timely settlements with ease.</p>
+              <p class="card-description"><?= t('check_payments', $currentLang) ?></p>
               <div class="card-footer">
-                <span class="card-badge success">Secure</span>
+                <span class="card-badge success"><?= t('secure', $currentLang) ?></span>
               </div>
             </div>
           </div>
@@ -143,11 +160,11 @@ $name = $_SESSION['user_name'] ?? 'User';
             </div>
             <div class="card-content">
               <h3 class="card-title">
-                <a href="pages/common/submit_price.php" class="card-link">Submit Local Market Price</a>
+                <a href="pages/common/submit_price.php" class="card-link"><?= t('submit_price', $currentLang) ?></a>
               </h3>
-              <p class="card-description">Share the prices you observe in local markets to help calculate averages. Contribute to fair pricing.</p>
+              <p class="card-description"><?= t('share_prices', $currentLang) ?></p>
               <div class="card-footer">
-                <i class="fas fa-users" title="Community Driven"></i>
+                <i class="fas fa-users" title="<?= t('community_driven', $currentLang) ?>"></i>
               </div>
             </div>
           </div>
@@ -157,9 +174,9 @@ $name = $_SESSION['user_name'] ?? 'User';
             </div>
             <div class="card-content">
               <h3 class="card-title">
-                <a href="pages/common/price_chart.php" class="card-link">View City Average Prices</a>
+                <a href="pages/common/price_chart.php" class="card-link"><?= t('view_prices', $currentLang) ?></a>
               </h3>
-              <p class="card-description">See crowdsourced average market prices across major cities. Make informed selling decisions.</p>
+              <p class="card-description"><?= t('see_averages', $currentLang) ?></p>
               <div class="card-footer">
                 <span class="card-badge">Trends</span>
               </div>
@@ -172,12 +189,12 @@ $name = $_SESSION['user_name'] ?? 'User';
             </div>
             <div class="card-content">
               <h3 class="card-title">
-                <a href="pages/consumer/browse.php" class="card-link">Browse Produce</a>
+                <a href="pages/consumer/browse.php" class="card-link"><?= t('browse_produce', $currentLang) ?></a>
               </h3>
-              <p class="card-description">View and explore produce available from farmers near you. Fresh picks at your fingertips.</p>
+              <p class="card-description"><?= t('view_explore_produce', $currentLang) ?></p>
               <div class="card-footer">
-                <span class="card-badge">Fresh Daily</span>
-                <a href="pages/consumer/browse.php" class="btn btn-secondary btn-small">Browse Now</a>
+                <span class="card-badge"><?= t('fresh_daily', $currentLang) ?></span>
+                <a href="pages/consumer/browse.php" class="btn btn-secondary btn-small"><?= t('browse_now', $currentLang) ?></a>
               </div>
             </div>
           </div>
@@ -187,11 +204,11 @@ $name = $_SESSION['user_name'] ?? 'User';
             </div>
             <div class="card-content">
               <h3 class="card-title">
-                <a href="pages/consumer/submit_price.php" class="card-link">Submit Market Price</a>
+                <a href="pages/consumer/submit_price.php" class="card-link"><?= t('submit_market_price', $currentLang) ?></a>
               </h3>
-              <p class="card-description">Submit observed prices to contribute to city-wide average price data. Help build transparent markets.</p>
+              <p class="card-description"><?= t('submit_observed_prices', $currentLang) ?></p>
               <div class="card-footer">
-                <i class="fas fa-heart" title="Support Local"></i>
+                <i class="fas fa-heart" title="<?= t('support_local', $currentLang) ?>"></i>
               </div>
             </div>
           </div>
@@ -201,11 +218,11 @@ $name = $_SESSION['user_name'] ?? 'User';
             </div>
             <div class="card-content">
               <h3 class="card-title">
-                <a href="pages/consumer/reviews.php" class="card-link">My Reviews</a>
+                <a href="pages/consumer/reviews.php" class="card-link"><?= t('my_reviews', $currentLang) ?></a>
               </h3>
-              <p class="card-description">Leave feedback for farmers and view your past reviews. Share your experience and rate quality.</p>
+              <p class="card-description"><?= t('leave_feedback', $currentLang) ?></p>
               <div class="card-footer">
-                <span class="status-indicator">Rate & Review</span>
+                <span class="status-indicator"><?= t('rate_review', $currentLang) ?></span>
               </div>
             </div>
           </div>
@@ -215,12 +232,12 @@ $name = $_SESSION['user_name'] ?? 'User';
             </div>
             <div class="card-content">
               <h3 class="card-title">
-                <a href="pages/common/price_chart.php" class="card-link">View Price Trends</a>
+                <a href="pages/common/price_chart.php" class="card-link"><?= t('view_price_trends', $currentLang) ?></a>
               </h3>
-              <p class="card-description">Check trends and average prices for crops across different cities. Shop smarter with data.</p>
+              <p class="card-description"><?= t('check_trends_averages', $currentLang) ?></p>
               <div class="card-footer">
                 <span class="card-badge">Insights</span>
-                <a href="pages/common/price_chart.php" class="btn btn-secondary btn-small">View Trends</a>
+                <a href="pages/common/price_chart.php" class="btn btn-secondary btn-small"><?= t('view_trends', $currentLang) ?></a>
               </div>
             </div>
           </div>
@@ -231,11 +248,11 @@ $name = $_SESSION['user_name'] ?? 'User';
             </div>
             <div class="card-content">
               <h3 class="card-title">
-                <a href="pages/agent/approve_listings.php" class="card-link">Approve Listings</a>
+                <a href="pages/agent/approve_listings.php" class="card-link"><?= t('approve_listings', $currentLang) ?></a>
               </h3>
-              <p class="card-description">Verify and approve farmer produce listings for quality and accuracy. Maintain marketplace integrity.</p>
+              <p class="card-description"><?= t('verify_approve_listings', $currentLang) ?></p>
               <div class="card-footer">
-                <span class="status-indicator pending">Pending Approvals</span>
+                <span class="status-indicator pending"><?= t('pending_approvals', $currentLang) ?></span>
               </div>
             </div>
           </div>
@@ -245,11 +262,11 @@ $name = $_SESSION['user_name'] ?? 'User';
             </div>
             <div class="card-content">
               <h3 class="card-title">
-                <a href="pages/agent/manage_center.php" class="card-link">Manage Collection Center</a>
+                <a href="pages/agent/manage_center.php" class="card-link"><?= t('manage_collection_center', $currentLang) ?></a>
               </h3>
-              <p class="card-description">Monitor inventory and coordinate logistics at collection centers. Optimize operations seamlessly.</p>
+              <p class="card-description"><?= t('monitor_inventory_logistics', $currentLang) ?></p>
               <div class="card-footer">
-                <button class="btn btn-secondary btn-small" onclick="simulateInventoryCheck()">Check Inventory</button>
+                <button class="btn btn-secondary btn-small" onclick="simulateInventoryCheck()"><?= t('check_inventory', $currentLang) ?></button>
               </div>
             </div>
           </div>
@@ -260,11 +277,11 @@ $name = $_SESSION['user_name'] ?? 'User';
             </div>
             <div class="card-content">
               <h3 class="card-title">
-                <a href="pages/admin/approve_agents.php" class="card-link">Approve Agents</a>
+                <a href="pages/admin/approve_agents.php" class="card-link"><?= t('approve_agents', $currentLang) ?></a>
               </h3>
-              <p class="card-description">Review and approve new agent registrations with proper credentials. Ensure trusted partnerships.</p>
+              <p class="card-description"><?= t('review_approve_agents', $currentLang) ?></p>
               <div class="card-footer">
-                <span class="status-indicator pending">New Requests</span>
+                <span class="status-indicator pending"><?= t('new_requests', $currentLang) ?></span>
               </div>
             </div>
           </div>
@@ -274,11 +291,11 @@ $name = $_SESSION['user_name'] ?? 'User';
             </div>
             <div class="card-content">
               <h3 class="card-title">
-                <a href="pages/admin/analytics.php" class="card-link">Analytics</a>
+                <a href="pages/admin/analytics.php" class="card-link"><?= t('analytics', $currentLang)?></a>
               </h3>
-              <p class="card-description">View system-wide analytics, trends, and reports for decision making. Drive platform growth.</p>
+              <p class="card-description"><?= t('view_system_analytics', $currentLang) ?></p>
               <div class="card-footer">
-                <span class="card-badge">Real-Time</span>
+                <span class="card-badge"><?= t('real_time', $currentLang) ?></span>
               </div>
             </div>
           </div>
@@ -288,11 +305,11 @@ $name = $_SESSION['user_name'] ?? 'User';
             </div>
             <div class="card-content">
               <h3 class="card-title">
-                <a href="support.php" class="card-link">Support</a>
+                <a href="pages/admin/requests.php" class="card-link"><?= t('support', $currentLang) ?></a>
               </h3>
-              <p class="card-description">Handle user queries, disputes, and provide assistance efficiently. Keep the community thriving.</p>
+              <p class="card-description"><?= t('handle_user_queries', $currentLang) ?></p>
               <div class="card-footer">
-                <i class="fas fa-envelope" title="Messages: 5 New"></i>
+                <i class="fas fa-envelope" title="<?= t('messages_new', $currentLang) ?>"></i>
               </div>
             </div>
           </div>
@@ -305,7 +322,7 @@ $name = $_SESSION['user_name'] ?? 'User';
   <?php if ($role === 'consumer'): ?>
   <section class="featured-products">
     <div class="container">
-      <h2 class="section-title">Featured Fresh Produce</h2>
+      <h2 class="section-title"><?= t('featured_fresh_produce', $currentLang) ?></h2>
       <div class="grid cards-grid">
         <!-- Placeholder product cards; in real implementation, loop over data -->
         <?php 
@@ -317,8 +334,8 @@ $name = $_SESSION['user_name'] ?? 'User';
             $imagePath = "https://via.placeholder.com/300x200?text={$crop}";
         }
         $cropTitle = ucfirst($crop);
-        $price = ($crop === 'tomato') ? '$2.99 / kg' : '$1.49 / kg';
-        $desc = ($crop === 'tomato') ? 'Fresh from local farms. Ripe and ready.' : 'Crisp and juicy, hand-picked daily.';
+        $price = ($crop === 'tomato') ? '49 birr  / kg' : '59 birr / kg';
+        $desc = ($crop === 'tomato') ? t('fresh_tomatoes', $currentLang) : t('crisp_teff', $currentLang);
         $rating = ($crop === 'tomato') ? '4.8' : '4.5';
         ?>
         <div class="card product-card">
@@ -330,7 +347,7 @@ $name = $_SESSION['user_name'] ?? 'User';
             <p class="card-price"><?= $price ?></p>
             <p class="card-description"><?= $desc ?></p>
             <div class="card-footer">
-              <button class="btn btn-primary btn-small">Add to Cart</button>
+              <button class="btn btn-primary btn-small"><?= t('add_to_cart', $currentLang) ?></button>
               <span class="card-rating"><i class="fas fa-star"></i> <?= $rating ?></span>
             </div>
           </div>
@@ -346,13 +363,19 @@ $name = $_SESSION['user_name'] ?? 'User';
 <script>
   // Simple interactive demo functions (replace with actual JS logic)
   function simulateQuickRequest() {
-    alert('Transport request simulated! Redirecting...');
-    // Actual: window.location.href = 'pages/farmer/transport_request.php';
+    alert('<?= t('transport_simulated', $currentLang) ?>');
   }
  
   function simulateInventoryCheck() {
-    alert('Inventory check initiated! Loading data...');
-    // Actual: window.location.href = 'pages/agent/manage_center.php';
+    alert('<?= t('inventory_initiated', $currentLang) ?>');
+  }
+
+  function changeLang(lang) {
+    fetch('set_lang.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'lang=' + lang
+    }).then(() => location.reload());
   }
 </script>
 <script src="assets/js/app.js"></script>

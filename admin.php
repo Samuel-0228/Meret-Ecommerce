@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: dashboard.php');
         exit;
     } else {
-        $error = 'Invalid admin credentials. Use admin@example.com / 123';
+        $error = 'Invalid admin credentials.';
     }
 }
 ?>

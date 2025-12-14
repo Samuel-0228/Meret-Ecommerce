@@ -6,3 +6,11 @@ document.addEventListener('DOMContentLoaded', function () {
         el.addEventListener('change', function () { /* placeholder if needed */ });
     }
 });
+
+function changeLang(lang) {
+    fetch('set_lang.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'lang=' + lang
+    }).then(() => location.reload());
+}

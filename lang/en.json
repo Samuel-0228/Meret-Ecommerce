@@ -1,0 +1,37 @@
+{
+    "site_title": "Meret — Connect Farmers & Markets",
+    "hero_title": "Meret",
+    "hero_desc": "Empowering rural farmers, connecting agents and urban consumers for a smarter market.",
+    "login": "Login",
+    "register": "Register",
+    "support": "Support",
+    "why_meret": "Why Meret?",
+    "about_desc": "Meret was built to address the challenges Ethiopian farmers face, connecting them directly to markets and reducing inefficiencies in the supply chain.",
+    "cards": [
+        {
+            "title": "Market Information",
+            "desc": "Farmers get real-time price updates and market trends to make informed decisions."
+        },
+        {
+            "title": "Logistics Support",
+            "desc": "We facilitate transportation from rural farms to urban markets efficiently."
+        },
+        {
+            "title": "Reduce Post-Harvest Loss",
+            "desc": "Our platform helps manage storage, inventory, and timely delivery to reduce spoilage."
+        },
+        {
+            "title": "Farmer Organization",
+            "desc": "Encourages group coordination and collaboration to increase bargaining power."
+        },
+        {
+            "title": "Fair Pricing",
+            "desc": "Ensures farmers and consumers get fair prices with transparency in the supply chain."
+        },
+        {
+            "title": "Analytics & Insights",
+            "desc": "Agents and administrators can track produce flow and market trends to optimize operations."
+        }
+    ],
+    "footer": "&copy; 2025 AAU — Built by Group 1"
+}

@@ -130,3 +130,26 @@ footer {
         font-size: 2rem;
     }
 }
+
+
+.language-switcher {
+    text-align: center;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.language-switcher a {
+    color: #1976d2;
+    /* Blue links */
+    text-decoration: none;
+    margin: 0 5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.language-switcher a:hover {
+    background-color: #1976d2;
+    color: #fff;
+}

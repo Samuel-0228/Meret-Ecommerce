@@ -1,0 +1,37 @@
+{
+    "site_title": "Meret — Qonnaan Bultoota fi Gabaa Wal-qunnamsiisu",
+    "hero_title": "Meret",
+    "hero_desc": "Qonnaan bultoota baadiyyaa jajjabeessu, waraqaa fi gurgurtaa gabaa magaalaa waliin wal-qunnamsiisu.",
+    "login": "Seeni",
+    "register": "Galmaa'i",
+    "support": "Deggersa",
+    "why_meret": "Maaliif Meret?",
+    "about_desc": "Meret rakkoo qonnaan bultoota Itoophiyaa keessa jiran furuuf ijaarrame, gabaa irratti wal-qunnamsiisuun bu'aa hin malle hir'isa.",
+    "cards": [
+        {
+            "title": "Odeeffannoo Gabaa",
+            "desc": "Qonnaan bultoonni odeeffannoo gatii fi haala gabaa yeroo ammaa argachuu danda'u."
+        },
+        {
+            "title": "Deggersa Geejjibaa",
+            "desc": "Irree gabaa magaalaa fi qonnaan bultoota baadiyyaa jidduutti geejjiba sirrii ni kennina."
+        },
+        {
+            "title": "Gatii Badaa Hir’isu",
+            "desc": "Sistemii keenya kuusaa fi dhiyeessa yeroo sirrii too’achuudhaan gatii badaa hir’isa."
+        },
+        {
+            "title": "Qonnaan Bultoota Walitti Qindeessu",
+            "desc": "Garee walitti qindeessuun humna gurgurtaa ol-kaasa."
+        },
+        {
+            "title": "Gatii Sirrii",
+            "desc": "Qonnaan bultoota fi gurgurtoonni gatii sirrii fi ifa argachuu danda’u."
+        },
+        {
+            "title": "Xiinxala fi Hubannoo",
+            "desc": "Ogeessonni fi bulchiistoonni gabaa fi adeemsa midhaanii hordofuu danda’u."
+        }
+    ],
+    "footer": "&copy; 2025 AAU — Garee 1’n ijaarame"
+}

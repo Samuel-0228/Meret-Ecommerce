@@ -7,9 +7,9 @@ $produce = file_exists($produceFile) ? json_decode(file_get_contents($produceFil
 // Default produce if JSON empty
 if (empty($produce)) {
     $produce = [
-        ["id"=>"p1","crop"=>"Tomato","qty"=>100,"lot"=>"LOT001","village"=>"Addis","farmer_id"=>"system","approved"=>true],
-        ["id"=>"p2","crop"=>"Teff","qty"=>50,"lot"=>"LOT002","village"=>"Bahir Dar","farmer_id"=>"system","approved"=>true],
-        ["id"=>"p3","crop"=>"Onion","qty"=>80,"lot"=>"LOT003","village"=>"Mekelle","farmer_id"=>"system","approved"=>true]
+        ["id"=>"p1","crop"=>"Tomato","qty"=>100,"price"=>"49","lot"=>"LOT001","village"=>"Addis","farmer_id"=>"system","approved"=>true],
+        ["id"=>"p2","crop"=>"Teff","qty"=>50,"price"=>"100","lot"=>"LOT002","village"=>"Bahir Dar","farmer_id"=>"system","approved"=>true],
+        ["id"=>"p3","crop"=>"Onion","qty"=>80,"price"=>"69","lot"=>"LOT003","village"=>"Mekelle","farmer_id"=>"system","approved"=>true]
     ];
 }
 $name = $_SESSION['user_name'] ?? 'User';
@@ -33,7 +33,7 @@ $name = $_SESSION['user_name'] ?? 'User';
     <button class="search-btn"><i class="fas fa-search"></i></button>
   </div>
   <div class="header-actions">
-    <a href="#" class="cart-icon" title="Shopping Cart">
+    <a href="cart.php" class="cart-icon" title="Shopping Cart">
       <i class="fas fa-shopping-cart"></i>
       <span class="cart-count">0</span>
     </a>
@@ -42,6 +42,8 @@ $name = $_SESSION['user_name'] ?? 'User';
       <a href="../../logout.php" class="logout-btn">Logout</a>
     </div>
   </div>
+
+  
 </header>
 
 <nav class="navbar">
@@ -78,7 +80,7 @@ $name = $_SESSION['user_name'] ?? 'User';
               </div>
               <div class="card-content">
                 <h3 class="card-title"><?= htmlspecialchars($item['crop']) ?></h3>
-                <p class="card-price">Price: Contact Farmer</p> <!-- Placeholder; add price to data if available -->
+                <p class="card-price"> <?= htmlspecialchars($item['price']) ?>Birr</p> <!-- Placeholder; add price to data if available -->
                 <p class="card-description">
                   Quantity Available: <?= htmlspecialchars($item['qty']) ?> kg<br>
                   Lot: <?= htmlspecialchars($item['lot']) ?><br>

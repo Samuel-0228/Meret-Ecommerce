@@ -68,11 +68,6 @@ http://localhost/meret-ecommerce/index.php
 
 ---
 
-## 📸 Screenshots
-
-*(Add screenshots of dashboards, checkout, and order confirmation here for visual appeal)*
-
----
 
 ## 🤝 Contributing
 

@@ -115,7 +115,7 @@ $activeCrops = count($cropCounts);
             <i class="fas fa-users"></i>
           </div>
           <div class="stat-content">
-            <h3>1,250</h3>
+            <h3>12</h3>
             <p>Total Users</p>
           </div>
         </div>

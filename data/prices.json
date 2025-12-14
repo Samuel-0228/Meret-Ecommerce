@@ -28,5 +28,20 @@
         "value": 99,
         "user_id": 1,
         "time": "2025-12-06 21:58:11"
+    },
+    {
+        "id": 1765283340,
+        "city": "Bahir Dar",
+        "crop": "teff",
+        "value": 220,
+        "consumer_id": 2,
+        "submitted_at": "2025-12-09T13:29:00+01:00"
+    },
+    {
+        "city": "Bahir Dar",
+        "crop": "onion",
+        "value": 10,
+        "user_id": 1,
+        "time": "2025-12-09 20:16:37"
     }
 ]
