@@ -17,12 +17,6 @@ $cartItems = [
         'qty' => 10,
         'price' => 2.99,
         'total' => 29.90
-    ],
-    [
-        'crop' => 'Onion',
-        'qty' => 5,
-        'price' => 1.49,
-        'total' => 7.45
     ]
 ];
 

@@ -512,6 +512,7 @@ body {
     color: var(--accent);
 }
 
+
 /* Responsive */
 @media (max-width: 768px) {
     .header {
@@ -1807,4 +1808,46 @@ body {
     color: var(--text-primary);
     font-size: 0.875rem;
     cursor: pointer;
+}
+
+.voice-support-btn {
+    background: none;
+    border: none;
+    color: #4CAF50;
+    /* Green accent to match eco/farm theme */
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(76, 175, 80, 0.2);
+    /* Subtle neumorphic shadow */
+    margin-left: 0.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+.voice-support-btn:hover {
+    background: rgba(76, 175, 80, 0.1);
+    /* Glassmorphism hover effect */
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    color: #388E3C;
+}
+
+.voice-support-btn:active {
+    transform: scale(0.95);
+}
+
+.voice-support-btn:focus {
+    outline: 2px solid #4CAF50;
+    outline-offset: 2px;
+}
+
+/* Responsive: Smaller on mobile */
+@media (max-width: 768px) {
+    .voice-support-btn {
+        font-size: 1rem;
+        padding: 0.4rem;
+    }
 }

@@ -40,6 +40,10 @@ $currentLang = $_SESSION['lang'] ?? 'en';
           <option value="om" <?= $currentLang === 'om' ? 'selected' : '' ?>>OM</option>
         </select>
       </div>
+      <!-- Voice Support Icon -->
+      <button class="voice-support-btn" title="<?= t('voice_support', $currentLang) ?>" onclick="speakWelcome()">
+        <i class="fas fa-volume-up"></i>
+      </button>
     </div>
   </div>
 </header>
@@ -122,7 +126,7 @@ $currentLang = $_SESSION['lang'] ?? 'en';
               </h3>
               <p class="card-description"><?= t('arrange_pickup', $currentLang) ?></p>
               <div class="card-footer">
-                <button class="btn btn-secondary btn-small" onclick="simulateQuickRequest()"><?= t('quick_request', $currentLang) ?></button>
+                <button class="btn btn-secondary btn-small" ><a href="pages/farmer/transport_request.php"><?= t('quick_request', $currentLang) ?></a></button>
               </div>
             </div>
           </div>
@@ -376,6 +380,17 @@ $currentLang = $_SESSION['lang'] ?? 'en';
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: 'lang=' + lang
     }).then(() => location.reload());
+  }
+
+  // Voice Support Prototype Function
+  function speakWelcome() {
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance('Hello, welcome to Meret e commerce! Discover fresh, local produce and connect with farmers in your area. Shop smarter, support sustainably.');
+      utterance.lang = '<?= $currentLang ?>'; 
+      speechSynthesis.speak(utterance);
+    } else {
+      alert('Voice support not available in this browser.');
+    }
   }
 </script>
 <script src="assets/js/app.js"></script>
